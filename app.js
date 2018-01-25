@@ -80,6 +80,7 @@ document.getElementById('book-form').addEventListener('submit', function (e) {
         // add book to list
         ui.addBookToList(book);
 
+        //show alert
         ui.showAlert('Book added successfully', 'success');
 
         // clear fields
@@ -94,7 +95,10 @@ document.getElementById('book-form').addEventListener('submit', function (e) {
 document.getElementById('book-list').addEventListener('click', function (e) {
     // instantiate UI
     const ui = new UI();
+
     // delete book
     ui.deleteBook(e.target);
+
+    // show alert
     ui.showAlert('Book deleted', 'success');
 });
