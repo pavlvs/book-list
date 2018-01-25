@@ -32,7 +32,7 @@ UI.prototype.clearFields = function () {
 }
 
 // show alert
-UI.prototype.showAlert = function(message, className) {
+UI.prototype.showAlert = function (message, className) {
     // create div
     const div = document.createElement('div');
     //Add message text
@@ -46,9 +46,17 @@ UI.prototype.showAlert = function(message, className) {
     // Insert alert
     container.insertBefore(div, form);
     // clear alert after 3 seconds
-    setTimeout(function() {
-        document.querySelector('.alert').remove();}, 3000);
-    
+    setTimeout(function () {
+        document.querySelector('.alert').remove();
+    }, 3000);
+
+}
+
+//delete book
+UI.prototype.deleteBook = function (target) {
+    if (target.className === 'delete') {
+        target.parentNode.parentNode.remove();
+    }
 }
 
 // Event listeners
@@ -80,4 +88,13 @@ document.getElementById('book-form').addEventListener('submit', function (e) {
 
 
     e.preventDefault();
+});
+
+// event listenerr for delete
+document.getElementById('book-list').addEventListener('click', function (e) {
+    // instantiate UI
+    const ui = new UI();
+    // delete book
+    ui.deleteBook(e.target);
+    ui.showAlert('Book deleted', 'success');
 });
